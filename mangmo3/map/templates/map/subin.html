@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>맹모삼천지교</title>
+  <meta charset="utf-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Sunflower:300,500,700&display=swap&subset=korean');
+    h1,h2 {
+      text-align: center;
+      font-family: cursive;
+    }
+    td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    thead{
+      background-color:  #bbdefb;
+    }
+    tbody{
+      background-color:#e3f2fd;
+    }
+    table {
+      margin-right:auto;
+      border-collapse: collapse;
+      }
+    #container{
+      widows: 940px;
+      margin:0px auto;
+      padding: 20px;
+      border: 1px solid #bcbcbc;
+    }
+    #header {
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 1px solid #bcbcbc;
+      }
+    #content {
+        width: 580px;
+        padding: 20px;
+        margin-bottom: 20px;
+        float: left;
+        border: 1px solid #bcbcbc;
+      }
+    #sidebar {
+        width: 260px;
+        padding: 20px;
+        margin-bottom: 20px;
+        float: right;
+        border: 1px solid #bcbcbc;
+      }
+    #footer {
+        clear: both;
+        padding: 20px;
+        border: 1px solid #bcbcbc;
+      }
+    
+  </style>
+
+</head>
+<body>
+  <div id="container">
+    <div id="jb-header">
+      <h1>맹모삼천지교</h1>
+      <h2>아이들과 함께 안전하게 살 수 있는 동네</h2>
+    </div>
+    <div id="content">
+      <form>
+        검색하실 주소를 입력하세요 <input type ="text" name="address">   
+        반경 선택 <select name="item">
+          <option value="100m">100m</option>
+          <option value="200m">200m</option>
+          <option value="300m">300m</option>
+          <option value="400m">400m</option>
+          <option value="500m">500m</option>
+        </select>
+        </select>
+        <button type ="submit">검색</button>
+      </form>
+
+      <br>
+      <img src="망원동.PNG" width=100% >
+    </div>
+    <div id="sidebar">
+    <table>
+        검색결과<br>
+      <tr>
+        <thead>
+          <td>항목 이름</td>
+          <td>수</td>
+        </thead>
+      </tr>
+      
+      <tbody>
+        <tr>
+          <td>유치원</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>중고등학교</td>
+          <td>1</td>
+        </tr> 
+        <tr>
+          <td>도서관</td>
+          <td>1</td>
+        </tr>  
+        <tr>
+          <td>공원</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>병원</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>유흥업소</td>
+          <td>1</td>
+        </tr>
+        
+      </tbody>   
+     </table>
+    </div>
+    <div id="footer">
+      <p>Copyright</p>  
+    </div>
+</body>
+</html>
