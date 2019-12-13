@@ -7,6 +7,9 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     }; 
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+
+
 // map.setMinLevel(3);
 // map.setMaxLevel(3);
 // 커피숍 마커가 표시될 좌표 배열입니다
@@ -52,7 +55,7 @@ createCoffeeMarkers(); // 커피숍 마커를 생성하고 커피숍 마커 배�
 createStoreMarkers(); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
 createCarparkMarkers(); // 주차장 마커를 생성하고 주차장 마커 배열에 추가합니다
 
-changeMarker('coffee'); // 지도에 커피숍 마커가 보이도록 설정합니다    
+ changeMarker('coffee'); // 지도에 커피숍 마커가 보이도록 설정합니다    
 
 
 // 마커이미지의 주소와, 크기, 옵션으로 마커 이미지를 생성하여 리턴하는 함수입니다
