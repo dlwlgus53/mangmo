@@ -1,11 +1,11 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+
 <head>
   <link rel="stylesheet" href="{% static 'css/frame.css' %}">
   <title>맹모삼천지교</title>
-  <meta charset="utf-8">
-<<<<<<< HEAD:mangmo3/map/templates/map/subin.html
+  <meta charset="utf-8"> 
   <style>
     body{
       font-family: "Lato",sans-serif;
@@ -18,15 +18,12 @@
       font-size: 20px;
     }
     td {
-      border: 1px solid #ccc;
+      border: 1px solid #ccd;
       padding: 10px;
       text-align: center;
     }
     thead{
-      background-color:  #bbdefb;
-    }
-    tbody{
-      background-color:#e3f2fd;
+      background-color: #ccc;
     }
     table {
       margin-right:auto;
@@ -35,25 +32,30 @@
     #container{
       widows: 940px;
       margin:0px auto;
-      padding-top: 10px;
+      padding-top: 30px;
       padding-left:20px;
       padding-right: 20px;
       border: 1px solid #bcbcbc;
     }
-    #header {
+    #header1 {
+      padding: 10px;
+      margin-bottom:0px;
+
+    }
+    #header2 {
         padding: 20px;
         margin-bottom: 20px;
         border: 1px solid #bcbcbc;
       }
     #content {
-        width: 580px;
+        width: 620px;
         padding: 20px;
         margin-bottom: 20px;
         float: left;
         border: 1px solid #bcbcbc;
       }
     #sidebar {
-        width: 260px;
+        width: 280px;
         padding: 20px;
         margin-bottom: 20px;
         float: right;
@@ -66,13 +68,15 @@
       }
     
   </style>
-=======
->>>>>>> 9bebf4af82763938658971d87612773a78726915:mangmo3/map/templates/map/frame.html
 
 </head>
+
 <body>
   <div id="container">
-    <div id="jb-header">
+    <div id="header1">
+      |  <a href="home.html">HOME</a> | <a href="frame.html">SEARCH</a>  | <a href="contact.html">CONTACT</a>
+      </div>
+    <div id="header2">
       <h1>맹모삼천지교</h1>
       <h2>아이들과 함께 안전하게 살 수 있는 동네</h2>
     </div>
@@ -133,7 +137,7 @@
      </table>
     </div>
     <div id="footer">
-      <p>Copyright</p>  
+      <p>hello</p>  
     </div>
 </body>
 </html>
