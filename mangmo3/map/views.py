@@ -10,3 +10,7 @@ def index(request):
 
 def frame(request):
     return render(request, 'map/frame.html')
+
+
+def result(request):
+    return render(request, 'map/result.html')
