@@ -1,17 +1,28 @@
-
-
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
-        center: new kakao.maps.LatLng(37.498004414546934, 127.02770621963765), // 지도의 중심좌표 
-        level: 3 // 지도의 확대 레벨 
-    }; 
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
 
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-var geocoder = new kakao.maps.services.Geocoder();
+// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+var map = new kakao.maps.Map(mapContainer, mapOption); 
 
 
-// map.setMinLevel(3);
-// map.setMaxLevel(3);
+
+//지도가 이동시 이벤트
+kakao.maps.event.addListener(map, 'dragend', function() {        
+    
+    // 지도 중심좌표를 얻어옵니다 
+    var latlng = map.getCenter(); 
+    
+    var message = '변경된 지도 중심좌표는 ' + latlng.getLat() + ' 이고, ';
+    message += '경도는 ' + latlng.getLng() + ' 입니다';
+    
+    var resultDiv = document.getElementById('result');  
+    resultDiv.innerHTML = message;
+    
+});
+
 // 커피숍 마커가 표시될 좌표 배열입니다
 var coffeePositions = [ 
     new kakao.maps.LatLng(37.499590490909185, 127.0263723554437),
@@ -45,6 +56,7 @@ var carparkPositions = [
     new kakao.maps.LatLng(37.497680616783086, 127.02518427952202)                       
 ];    
 
+
 var markerImageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
     coffeeMarkers = [], // 커피숍 마커 객체를 가지고 있을 배열입니다
     storeMarkers = [], // 편의점 마커 객체를 가지고 있을 배열입니다
@@ -55,7 +67,7 @@ createCoffeeMarkers(); // 커피숍 마커를 생성하고 커피숍 마커 배�
 createStoreMarkers(); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
 createCarparkMarkers(); // 주차장 마커를 생성하고 주차장 마커 배열에 추가합니다
 
- changeMarker('coffee'); // 지도에 커피숍 마커가 보이도록 설정합니다    
+changeMarker('coffee'); // 지도에 커피숍 마커가 보이도록 설정합니다    
 
 
 // 마커이미지의 주소와, 크기, 옵션으로 마커 이미지를 생성하여 리턴하는 함수입니다
@@ -140,36 +152,16 @@ function createCarparkMarkers() {
         // 마커이미지와 마커를 생성합니다
         var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
             marker = createMarker(carparkPositions[i], markerImage);  
-        
-
 
         // 생성된 마커를 주차장 마커 배열에 추가합니다
-        carparkMarkers.push(marker);    
-        
-        
-        
-
+        carparkMarkers.push(marker);        
     }                
 }
-
-
 
 // 주차장 마커들의 지도 표시 여부를 설정하는 함수입니다
 function setCarparkMarkers(map) {        
     for (var i = 0; i < carparkMarkers.length; i++) {  
         carparkMarkers[i].setMap(map);
-        // 인포윈도우를 생성합니다
-        var iwContent = "hello";
-        iwPosition = carparkPositions[i] //인포윈도우 표시 위치입니다
-        
-        var infowindow = new kakao.maps.InfoWindow({
-            position : iwPosition, 
-            content : iwContent 
-        });
-            
-        // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-        infowindow.open(map, carparkMarkers[i]);
-        
     }        
 }
 
@@ -218,48 +210,5 @@ function changeMarker(type){
         setCoffeeMarkers(null);
         setStoreMarkers(null);
         setCarparkMarkers(map);  
-         
-
-        
     }    
 } 
-
-
-
-kakao.maps.event.addListener(map, 'dragend', function() {        
-    
-    // 지도의 현재 중심좌표를 얻어옵니다 
-    var center = map.getCenter(); 
-    
-    // 지도의 현재 레벨을 얻어옵니다
-    var level = map.getLevel();
-    
-    // 지도타입을 얻어옵니다
-    var mapTypeId = map.getMapTypeId(); 
-    
-    // 지도의 현재 영역을 얻어옵니다 
-    var bounds = map.getBounds();
-    
-    // 영역의 남서쪽 좌표를 얻어옵니다 
-    var swLatLng = bounds.getSouthWest(); 
-    
-    // 영역의 북동쪽 좌표를 얻어옵니다 
-    var neLatLng = bounds.getNorthEast(); 
-    
-    // 영역정보를 문자열로 얻어옵니다. ((남,서), (북,동)) 형식입니다
-    var boundsStr = bounds.toString();
-    
-    
-    var message = '지도 중심좌표는 위도 ' + center.getLat() + ', <br>';
-    message += '경도 ' + center.getLng() + ' 이고 <br>';
-    message += '지도 레벨은 ' + level + ' 입니다 <br> <br>';
-    message += '지도 타입은 ' + mapTypeId + ' 이고 <br> ';
-    message += '지도의 남서쪽 좌표는 ' + swLatLng.getLat() + ', ' + swLatLng.getLng() + ' 이고 <br>';
-    message += '북동쪽 좌표는 ' + neLatLng.getLat() + ', ' + neLatLng.getLng() + ' 입니다';
-    
-    var resultDiv = document.getElementById('result');  
-    resultDiv.innerHTML = message;
-    
-});
-
-
