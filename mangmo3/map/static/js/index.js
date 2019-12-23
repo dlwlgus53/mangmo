@@ -6,7 +6,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 
 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption); 
-
+// 커피숍 마커가 표시될 좌표 배열입니다
 
 
 //지도가 이동시 이벤트
@@ -14,47 +14,48 @@ kakao.maps.event.addListener(map, 'dragend', function() {
     
     // 지도 중심좌표를 얻어옵니다 
     var latlng = map.getCenter(); 
+    var bounds = map.getBounds();
     
-    var message = '변경된 지도 중심좌표는 ' + latlng.getLat() + ' 이고, ';
-    message += '경도는 ' + latlng.getLng() + ' 입니다';
+    // 영역의 남서쪽 좌표를 얻어옵니다 
+    var swLatLng = bounds.getSouthWest(); 
+    
+    // 영역의 북동쪽 좌표를 얻어옵니다 
+    var neLatLng = bounds.getNorthEast(); 
+    
+    // 영역정보를 문자열로 얻어옵니다. ((남,서), (북,동)) 형식입니다
+    var boundsStr = bounds.toString();
+    
+    
+    var message = '변경된 지도 중심좌표는 ' +  boundsStr + ' 이고, ';
+
+    message += String(counter(swLatLng, neLatLng, coffeePositions))
     
     var resultDiv = document.getElementById('result');  
     resultDiv.innerHTML = message;
     
 });
 
-// 커피숍 마커가 표시될 좌표 배열입니다
-var coffeePositions = [ 
-    new kakao.maps.LatLng(37.499590490909185, 127.0263723554437),
-    new kakao.maps.LatLng(37.499427948430814, 127.02794423197847),
-    new kakao.maps.LatLng(37.498553760499505, 127.02882598822454),
-    new kakao.maps.LatLng(37.497625593121384, 127.02935713582038),
-    new kakao.maps.LatLng(37.49646391248451, 127.02675574250912),
-    new kakao.maps.LatLng(37.49629291770947, 127.02587362608637),
-    new kakao.maps.LatLng(37.49754540521486, 127.02546694890695)                
-];
+function counter(swLatLng, neLatLng, list) {
+    //남서보다는 커야하고, 북동보다는 작아야 한다.
+    cnt =0 
+    for (var i = 0; i < list.length; i++) {  
+        lat = list[i].Ha//위도
+        lan = list[i].Ga//경도
+        console.log(lat, lan)
+        console.log(lan>swLatLng.getLng())
+        if(lat>swLatLng.getLat() && lan>swLatLng.getLng() &&
+        lat<neLatLng.getLat() && lan<neLatLng.getLng()){
+            cnt +=1
+        }
+    }
+    console.log(cnt)
+    return cnt
+}
 
-// 편의점 마커가 표시될 좌표 배열입니다
-var storePositions = [
-    new kakao.maps.LatLng(37.497535461505684, 127.02948149502778),
-    new kakao.maps.LatLng(37.49671536281186, 127.03020491448352),
-    new kakao.maps.LatLng(37.496201943633714, 127.02959405469642),
-    new kakao.maps.LatLng(37.49640072567703, 127.02726459882308),
-    new kakao.maps.LatLng(37.49640098874988, 127.02609983175294),
-    new kakao.maps.LatLng(37.49932849491523, 127.02935780247945),
-    new kakao.maps.LatLng(37.49996818951873, 127.02943721562295)
-];
 
-// 주차장 마커가 표시될 좌표 배열입니다
-var carparkPositions = [
-    new kakao.maps.LatLng(37.49966168796031, 127.03007039430118),
-    new kakao.maps.LatLng(37.499463762912974, 127.0288828824399),
-    new kakao.maps.LatLng(37.49896834100913, 127.02833986892401),
-    new kakao.maps.LatLng(37.49893267508434, 127.02673400572665),
-    new kakao.maps.LatLng(37.49872543597439, 127.02676785815386),
-    new kakao.maps.LatLng(37.49813096097184, 127.02591949495914),
-    new kakao.maps.LatLng(37.497680616783086, 127.02518427952202)                       
-];    
+
+
+
 
 
 var markerImageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
@@ -131,6 +132,7 @@ function createStoreMarkers() {
         storeMarkers.push(marker);    
     }        
 }
+
 
 // 편의점 마커들의 지도 표시 여부를 설정하는 함수입니다
 function setStoreMarkers(map) {        
@@ -212,3 +214,18 @@ function changeMarker(type){
         setCarparkMarkers(map);  
     }    
 } 
+
+
+// 검색시작
+function search(){
+    var loginForm = document.loginForm;
+    var userId = loginForm.userId.value;
+    var password = loginForm.password.value;
+    
+    if(!userId || !password){
+        alert("아이디와 비밀번호를 모두 입력해주세요.")
+    }else{
+        loginForm.submit();
+    }
+}
+

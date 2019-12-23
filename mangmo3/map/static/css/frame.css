@@ -1,59 +1,42 @@
+body {
+  font-family: "Lato", sans-serif;
+}
 
-body{
-  font-family: "Lato",sans-serif;
+.searchbar{
+  background-color : mistyrose;
+  text-align: center;
+  padding-top : 10px;
+  padding-bottom : 10px;
+  margin-bottom : 10px
 }
-h1,h2 {
-  text-align: left;
-  font-size: 25px;
+
+.sidebar{
+  text-align: center;
+  font-weight: bold;
 }
-h2{
-  font-size: 20px;
+
+.header {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
 }
+
+#footer {
+  clear: both;
+  padding: 20px;
+}
+
+
+
 td {
   border: 1px solid #ccc;
   padding: 10px;
   text-align: center;
 }
-thead{
-  background-color:  #ccc;
+thead {
+  background-color: #ccc;
 }
 table {
-  margin-right:auto;
+  margin-right: auto;
   border-collapse: collapse;
-  }
-#container{
-  widows: 940px;
-  margin:0px auto;
-  padding-top: 30px;
-  padding-left:20px;
-  padding-right: 20px;
-  border: 1px solid #bcbcbc;
 }
-#header1 {
-  padding: 10px;
-  margin-bottom:0px;
-
-}
-#header2 {
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 1px solid #bcbcbc;
-  }
-#content {
-    width: 620px;
-    padding: 20px;
-    margin-bottom: 20px;
-    float: left;
-    border: 1px solid #bcbcbc;
-  }
-#sidebar {
-    width: 280px;
-    padding: 20px;
-    margin-bottom: 20px;
-    float: right;
-    border: 1px solid #bcbcbc;
-  }
-#footer {
-    clear: both;
-    padding: 20px;
-  }
