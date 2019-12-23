@@ -8,15 +8,28 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 
 
-
 //지도가 이동시 이벤트
 kakao.maps.event.addListener(map, 'dragend', function() {        
     
     // 지도 중심좌표를 얻어옵니다 
     var latlng = map.getCenter(); 
+    var bounds = map.getBounds();
+    
+    // 영역의 남서쪽 좌표를 얻어옵니다 
+    var swLatLng = bounds.getSouthWest(); 
+    
+    // 영역의 북동쪽 좌표를 얻어옵니다 
+    var neLatLng = bounds.getNorthEast(); 
+    
+    // 영역정보를 문자열로 얻어옵니다. ((남,서), (북,동)) 형식입니다
+    var boundsStr = bounds.toString();
+    
     
     var message = '변경된 지도 중심좌표는 ' + latlng.getLat() + ' 이고, ';
-    message += '경도는 ' + latlng.getLng() + ' 입니다';
+    message += '경도는 ' + latlng.getLng() + ' 입니다<br>';
+    message += '지도의 남서쪽 좌표는 ' + swLatLng.getLat() + ', ' + swLatLng.getLng() + ' 이고 <br>';
+    message += '북동쪽 좌표는 ' + neLatLng.getLat() + ', ' + neLatLng.getLng() + ' 입니다';
+
     
     var resultDiv = document.getElementById('result');  
     resultDiv.innerHTML = message;
