@@ -6,7 +6,16 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 
 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption); 
-
+// 커피숍 마커가 표시될 좌표 배열입니다
+var coffeePositions = [ 
+    new kakao.maps.LatLng(37.499590490909185, 127.0263723554437),
+    new kakao.maps.LatLng(37.499427948430814, 127.02794423197847),
+    new kakao.maps.LatLng(37.498553760499505, 127.02882598822454),
+    new kakao.maps.LatLng(37.497625593121384, 127.02935713582038),
+    new kakao.maps.LatLng(37.49646391248451, 127.02675574250912),
+    new kakao.maps.LatLng(37.49629291770947, 127.02587362608637),
+    new kakao.maps.LatLng(37.49754540521486, 127.02546694890695)                
+];
 
 //지도가 이동시 이벤트
 kakao.maps.event.addListener(map, 'dragend', function() {        
@@ -25,27 +34,35 @@ kakao.maps.event.addListener(map, 'dragend', function() {
     var boundsStr = bounds.toString();
     
     
-    var message = '변경된 지도 중심좌표는 ' + latlng.getLat() + ' 이고, ';
-    message += '경도는 ' + latlng.getLng() + ' 입니다<br>';
-    message += '지도의 남서쪽 좌표는 ' + swLatLng.getLat() + ', ' + swLatLng.getLng() + ' 이고 <br>';
-    message += '북동쪽 좌표는 ' + neLatLng.getLat() + ', ' + neLatLng.getLng() + ' 입니다';
+    var message = '변경된 지도 중심좌표는 ' +  boundsStr + ' 이고, ';
 
+    message += String(counter(swLatLng, neLatLng, coffeePositions))
     
     var resultDiv = document.getElementById('result');  
     resultDiv.innerHTML = message;
     
 });
 
-// 커피숍 마커가 표시될 좌표 배열입니다
-var coffeePositions = [ 
-    new kakao.maps.LatLng(37.499590490909185, 127.0263723554437),
-    new kakao.maps.LatLng(37.499427948430814, 127.02794423197847),
-    new kakao.maps.LatLng(37.498553760499505, 127.02882598822454),
-    new kakao.maps.LatLng(37.497625593121384, 127.02935713582038),
-    new kakao.maps.LatLng(37.49646391248451, 127.02675574250912),
-    new kakao.maps.LatLng(37.49629291770947, 127.02587362608637),
-    new kakao.maps.LatLng(37.49754540521486, 127.02546694890695)                
-];
+function counter(swLatLng, neLatLng, list) {
+    //남서보다는 커야하고, 북동보다는 작아야 한다.
+    cnt =0 
+    for (var i = 0; i < list.length; i++) {  
+        lat = list[i].Ha//위도
+        lan = list[i].Ga//경도
+        console.log(lat, lan)
+        console.log(lan>swLatLng.getLng())
+        if(lat>swLatLng.getLat() && lan>swLatLng.getLng() &&
+        lat<neLatLng.getLat() && lan<neLatLng.getLng()){
+            cnt +=1
+        }
+    }
+    console.log(cnt)
+    return cnt
+}
+
+
+
+
 
 // 편의점 마커가 표시될 좌표 배열입니다
 var storePositions = [
@@ -144,6 +161,7 @@ function createStoreMarkers() {
         storeMarkers.push(marker);    
     }        
 }
+
 
 // 편의점 마커들의 지도 표시 여부를 설정하는 함수입니다
 function setStoreMarkers(map) {        
