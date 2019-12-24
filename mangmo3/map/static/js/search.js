@@ -4,8 +4,13 @@ var range = 3;
 
 
 const urlParams = new URLSearchParams(window.location.search);
-address = urlParams.get('address');
-range = urlParams.get('range')
+if(urlParams.get('address')!= undefined){
+    address = urlParams.get('address');
+}
+if(urlParams.get('range')!= undefined){
+    range = urlParams.get('range')
+
+}
 
 
 // 주소 -> 좌표 를 만듭니다.
