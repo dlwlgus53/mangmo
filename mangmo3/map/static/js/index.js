@@ -41,8 +41,7 @@ function counter(swLatLng, neLatLng, list) {
     for (var i = 0; i < list.length; i++) {  
         lat = list[i].Ha//위도
         lan = list[i].Ga//경도
-        console.log(lat, lan)
-        console.log(lan>swLatLng.getLng())
+
         if(lat>swLatLng.getLat() && lan>swLatLng.getLng() &&
         lat<neLatLng.getLat() && lan<neLatLng.getLng()){
             cnt +=1
@@ -216,16 +215,4 @@ function changeMarker(type){
 } 
 
 
-// 검색시작
-function search(){
-    var loginForm = document.loginForm;
-    var userId = loginForm.userId.value;
-    var password = loginForm.password.value;
-    
-    if(!userId || !password){
-        alert("아이디와 비밀번호를 모두 입력해주세요.")
-    }else{
-        loginForm.submit();
-    }
-}
 

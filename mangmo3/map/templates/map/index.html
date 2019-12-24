@@ -28,16 +28,16 @@
       
       <div class = "row">
         <div class = "searchbar col-md-12"> 
-            <form>
+            <form name = "searchForm">
                 <span>검색하실 주소를 입력하세요</span> <input type ="text" name="address">   
                 <span>반경 선택 </span>
-                <select name="item">
+                <select name="range">
                     <option value="s">좁게</option>
                     <option value="m">넓게</option>
                     <option value="w">중간</option>
 
                 </select>
-                <button type ="submit">검색</button>
+                <input class = "btn" onclick="search()" value="검색" type ="submit" id ="searchBtn">
             </form>
       </div>
       <!-- search bar end -->
@@ -124,9 +124,11 @@
     </body>
 
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6a890a7f127b3b83c16c9ee8ebbe7d5"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6a890a7f127b3b83c16c9ee8ebbe7d5&libraries=services"></script>
 <script type="text/javascript" src="/static/js/list.js"></script>
 <script type="text/javascript" src="/static/js/index.js"></script>
+<script type="text/javascript" src="/static/js/search.js"></script>
+
 
 
 
