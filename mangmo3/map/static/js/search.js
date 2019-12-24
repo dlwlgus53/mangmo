@@ -1,6 +1,6 @@
 // 검색시작
 var address = "대구";
-var range = "";
+var range = 3;
 
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -36,6 +36,22 @@ geocoder.addressSearch(address, function(result, status) {
 
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         map.setCenter(coords);
+        map.setLevel(range);
+        // 지도의 현재 영역을 얻어옵니다 
+        var bounds = map.getBounds();
+        // 영역의 남서쪽 좌표를 얻어옵니다 
+        var swLatLng = bounds.getSouthWest(); 
+
+        // 영역의 북동쪽 좌표를 얻어옵니다 
+        var neLatLng = bounds.getNorthEast(); 
+        
+
+        var message = String(counter(swLatLng, neLatLng, coffeePositions))
+
+        var resultDiv = document.getElementById('kid');  
+        resultDiv.innerHTML = message;
+    
+
     }
 
     else{
@@ -51,3 +67,22 @@ geocoder.addressSearch(address, function(result, status) {
 
 
 
+
+
+
+
+function counter(swLatLng, neLatLng, list) {
+    //남서보다는 커야하고, 북동보다는 작아야 한다.
+    cnt =0 
+    for (var i = 0; i < list.length; i++) {  
+        lat = list[i].Ha//위도
+        lan = list[i].Ga//경도
+
+        if(lat>swLatLng.getLat() && lan>swLatLng.getLng() &&
+        lat<neLatLng.getLat() && lan<neLatLng.getLng()){
+            cnt +=1
+        }
+    }
+    console.log(cnt)
+    return cnt
+}

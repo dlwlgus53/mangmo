@@ -32,9 +32,9 @@
                 <span>검색하실 주소를 입력하세요</span> <input type ="text" name="address">   
                 <span>반경 선택 </span>
                 <select name="range">
-                    <option value="s">좁게</option>
-                    <option value="m">넓게</option>
-                    <option value="w">중간</option>
+                    <option value="2">좁은 범위</option>
+                    <option value="3">중간 범위</option>
+                    <option value="5">넓은 범위</option>
 
                 </select>
                 <input class = "btn" onclick="search()" value="검색" type ="submit" id ="searchBtn">
@@ -48,8 +48,6 @@
         <div  class="mapwrap col-md-8"> 
             <!-- 지도 위에 표시될 마커 카테고리 -->
             <div id="map" style="width:100%;height:350px;"></div>
-            <p><em>지도를 움직여 주세요!</em></p> 
-            <p id="result"></p>
             
             <div class="category">
                 <ul>
@@ -84,7 +82,7 @@
         <tbody>
           <tr>
             <td>유치원</td>
-            <td>1</td>
+            <td id = "kid">1</td>
           </tr>
           <tr>
             <td>중고등학교</td>
@@ -128,6 +126,8 @@
 <script type="text/javascript" src="/static/js/list.js"></script>
 <script type="text/javascript" src="/static/js/index.js"></script>
 <script type="text/javascript" src="/static/js/search.js"></script>
+<script type="text/javascript" src="/static/js/count.js"></script>
+
 
 
 

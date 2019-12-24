@@ -1,55 +1,13 @@
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(37.49788733918121 , 127.02746869487623), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
+        level: 3, // 지도의 확대 레벨
+        draggable: false,
     };
 
 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 // 커피숍 마커가 표시될 좌표 배열입니다
-
-
-//지도가 이동시 이벤트
-kakao.maps.event.addListener(map, 'dragend', function() {        
-    
-    // 지도 중심좌표를 얻어옵니다 
-    var latlng = map.getCenter(); 
-    var bounds = map.getBounds();
-    
-    // 영역의 남서쪽 좌표를 얻어옵니다 
-    var swLatLng = bounds.getSouthWest(); 
-    
-    // 영역의 북동쪽 좌표를 얻어옵니다 
-    var neLatLng = bounds.getNorthEast(); 
-    
-    // 영역정보를 문자열로 얻어옵니다. ((남,서), (북,동)) 형식입니다
-    var boundsStr = bounds.toString();
-    
-    
-    var message = '변경된 지도 중심좌표는 ' +  boundsStr + ' 이고, ';
-
-    message += String(counter(swLatLng, neLatLng, coffeePositions))
-    
-    var resultDiv = document.getElementById('result');  
-    resultDiv.innerHTML = message;
-    
-});
-
-function counter(swLatLng, neLatLng, list) {
-    //남서보다는 커야하고, 북동보다는 작아야 한다.
-    cnt =0 
-    for (var i = 0; i < list.length; i++) {  
-        lat = list[i].Ha//위도
-        lan = list[i].Ga//경도
-
-        if(lat>swLatLng.getLat() && lan>swLatLng.getLng() &&
-        lat<neLatLng.getLat() && lan<neLatLng.getLng()){
-            cnt +=1
-        }
-    }
-    console.log(cnt)
-    return cnt
-}
 
 
 
@@ -213,6 +171,5 @@ function changeMarker(type){
         setCarparkMarkers(map);  
     }    
 } 
-
 
 
