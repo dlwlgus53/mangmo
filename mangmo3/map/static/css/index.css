@@ -7,3 +7,7 @@
 .category .ico_coffee {background-position:-10px 0; background:url('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FnIVp8%2FbtqAbnA2W09%2FcZhhO1p7gSH79ariCsP4yK%2Fimg.png');}  
 .category .ico_store {background-position:-10px -36px;}   
 .category .ico_carpark {background-position:-10px -72px;} 
+.IMGresize{
+    width : 20px;
+    height : auto;
+}
