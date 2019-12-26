@@ -50,11 +50,17 @@ geocoder.addressSearch(address, function(result, status) {
         // 영역의 북동쪽 좌표를 얻어옵니다 
         var neLatLng = bounds.getNorthEast(); 
         
+        //도서관 정보를 검색후 화면에 보내줍니다.
+        var lib = String(counter(swLatLng, neLatLng, libraryPositions))
 
-        var message = String(counter(swLatLng, neLatLng, coffeePositions))
+        var libDiv = document.getElementById('lib');  
+        libDiv.innerHTML = lib;
 
-        var resultDiv = document.getElementById('kid');  
-        resultDiv.innerHTML = message;
+        //유흥주점 정보를 검색후 화면에 보내줍니다.
+        var badstore = String(counter(swLatLng, neLatLng, badstorePositions))
+
+        var badstoreDiv = document.getElementById('badstore');  
+        badstoreDiv.innerHTML = badstore;
     
 
     }
