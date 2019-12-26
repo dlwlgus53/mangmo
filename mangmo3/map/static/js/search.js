@@ -61,6 +61,13 @@ geocoder.addressSearch(address, function(result, status) {
 
         var badstoreDiv = document.getElementById('badstore');  
         badstoreDiv.innerHTML = badstore;
+
+        //병원 정보를 검색후 화면에 보내줍니다.
+        var hospital = String(counter(swLatLng, neLatLng, hospitalPositions))
+
+        var hospitalDiv = document.getElementById('hospital');  
+        hospitalDiv.innerHTML = hospital;
+    
     
 
     }
