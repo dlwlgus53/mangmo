@@ -51,7 +51,7 @@ geocoder.addressSearch(address, function(result, status) {
         var neLatLng = bounds.getNorthEast(); 
         
 
-        var message = String(counter(swLatLng, neLatLng, coffeePositions))
+        var message = String(counter(swLatLng, neLatLng, libraryPositions))
 
         var resultDiv = document.getElementById('kid');  
         resultDiv.innerHTML = message;
