@@ -21,16 +21,21 @@ var markerImageSrc = 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fn
     libraryMarkers = []; // 도서관 마커 객체를 가지고 있을 배열입니다
     badstoreMarkers = []; //유흥주점 마커 객체
     hospitalMarkers = []; //병원 마커 객체
+    parkMarkers = []; //공원 마커 객체
+    kidMarkers = []; //유치원 마커 객체
+
+
 
 
 
     
-// createCoffeeMarkers(); // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가합니다
-// createStoreMarkers(); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
-// createCarparkMarkers(); // 주차장 마커를 생성하고 주차장 마커 배열에 추가합니다
 createLibraryMarkers(); //도서관 마커를 생성하고 주차장 마커 배열에 추가합니다
 createBadstoreMarkers(); //유흥주점 마커를 생성하고 주차장 마커 배열에 추가합니다
 createHospitalMarkers(); //병원 마커를 생성하고 주차장 마커 배열에 추가합니다
+createParkMarkers(); //병원 마커를 생성하고 주차장 마커 배열에 추가합니다
+createKidMarkers(); //병원 마커를 생성하고 주차장 마커 배열에 추가합니다
+
+
 
 
 
@@ -130,11 +135,62 @@ function setHospitalMarkers(map) {
 }
 
 
+//공원 마커를 생성하고 주차장 마커 배열에 추가하는 함수입니다
+function createParkMarkers() {
+    for (var i = 0; i < parkPositions.length; i++) {
+        
+        var imageSize = new kakao.maps.Size(22, 26),
+  
+        image = "https://i.ibb.co/BGQb3BF/park.png"
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(image, imageSize),    
+            marker = createMarker(parkPositions[i], markerImage);  
+
+        // 생성된 마커를 도서관 마커 배열에 추가합니다
+        parkMarkers.push(marker);        
+    }                
+}
+
+// 공원 마커들의 지도 표시 여부를 설정하는 함수입니다
+function setParkMarkers(map) {        
+    for (var i = 0; i < parkMarkers.length; i++) {  
+        parkMarkers[i].setMap(map);
+    }        
+}
+
+
+//유치원 마커를 생성하고 주차장 마커 배열에 추가하는 함수입니다
+function createKidMarkers() {
+    for (var i = 0; i < kidPositions.length; i++) {
+        
+        var imageSize = new kakao.maps.Size(22, 26),
+  
+        image = "https://i.ibb.co/mCS643K/kids.png"
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(image, imageSize),    
+            marker = createMarker(kidPositions[i], markerImage);  
+
+        // 생성된 마커를 유치원 마커 배열에 추가합니다
+        kidMarkers.push(marker);        
+    }                
+} 
+// 유치원 마커들의 지도 표시 여부를 설정하는 함수입니다
+function setKidMarkers(map) {        
+    for (var i = 0; i < kidMarkers.length; i++) {  
+        kidMarkers[i].setMap(map);
+    }        
+}
+
+
 
 
 setLibraryMarkers(map);
 setBadstoreMarkers(map);
 setHospitalMarkers(map);
+setParkMarkers(map);
+setKidMarkers(map);
+
+
 
 
 //이미지 링크
