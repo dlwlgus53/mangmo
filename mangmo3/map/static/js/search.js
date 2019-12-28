@@ -68,6 +68,17 @@ geocoder.addressSearch(address, function(result, status) {
         var hospitalDiv = document.getElementById('hospital');  
         hospitalDiv.innerHTML = hospital;
     
+        //공원 정보를 검색후 화면에 보내줍니다.
+        var park = String(counter(swLatLng, neLatLng, parkPositions))
+
+        var parkDiv = document.getElementById('park');  
+        parkDiv.innerHTML = park;
+
+        //유치원 정보를 검색후 화면에 보내줍니다.
+        var kid = String(counter(swLatLng, neLatLng, kidPositions))
+
+        var kidDiv = document.getElementById('kid');  
+        kidDiv.innerHTML = kid;
     
 
     }
