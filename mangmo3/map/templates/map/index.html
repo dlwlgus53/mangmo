@@ -27,21 +27,27 @@
         </div>
       
       <div class = "row">
-        <div class = "searchbar col-md-12"> 
-            <form name = "searchForm">
-              <!-- <input type="text" id="sample6_postcode" placeholder="우편번호"> -->
-              <input type="button" onclick="sample6_execDaumPostcode()" value="우리집 주소찾기"><br>
-              <!-- <input type="text" id="sample6_detailAddress" placeholder="상세주소"> -->
-              <!-- <input type="text" id="sample6_extraAddress" placeholder="참고항목"> -->
-               <input type ="text"id="sample6_address" placeholder = "주소" name="address">   
-                <span>반경 선택 </span>
-                <select name="range">
-                    <option value="2">좁은 범위</option>
-                    <option value="3">중간 범위</option>
-                    <option value="5">넓은 범위</option>
+        <p>주소를 입력하고, 반경을 선택후 검색버튼을 눌려주세요</p>
 
-                </select>
-                <input class = "btn" onclick="search()" value="검색" type ="submit" id ="searchBtn">
+        <div class = "searchbar col-md-12"> 
+
+            <form name = "searchForm">
+              <center>
+
+              <input class="form-box" onclick="sample6_execDaumPostcode()" type ="text" id="sample6_address" placeholder = "주소를 입력해 주세요" name="address">  
+              <input  class="btn" onclick="search()" value="검색" type ="submit" id ="searchBtn">
+             
+              <br>
+
+                  <input class="form-check-input" name = "range" type="radio" id="2" value="2" checked>
+                  <label class="form-check-label" for="inlineCheckbox1">좁은 범위</label>
+                  <input class="form-check-input" name = "range" type="radio" id="3" value="3">
+                  <label class="form-check-label" for="inlineCheckbox1">중간 범위</label>
+                  <input class="form-check-input" name = "range" type="radio" id="5" value="5">
+                  <label class="form-check-label" for="inlineCheckbox1">넓은 범위</label>
+                
+
+                </center>
             </form>
       </div>
       <!-- search bar end -->
@@ -91,12 +97,12 @@
           <tr>
             <td><img class='IMGresize' src="https://i.ibb.co/PcC6qy0/hospital.png" alt="hospital" border="0"></td>
             <td>병원</td>
-            <td id = "hospital">1</td >
+            <td id = "hospital">0</td >
           </tr>
           <tr>
             <td><img class='IMGresize' src="https://i.ibb.co/vXg5hgM/glass.png" alt="glass" border="0"></td>
             <td>유흥업소</td>
-            <td id = "badstore">1</td>
+            <td id = "badstore">0</td>
           </tr>
         </tbody>   
        </table>
@@ -133,3 +139,4 @@
 <!-- c6a890a7f127b3b83c16c9ee8ebbe7d5 -->
 
 </html>
+
