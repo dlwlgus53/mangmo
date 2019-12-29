@@ -23,6 +23,8 @@ var markerImageSrc = 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fn
     hospitalMarkers = []; //병원 마커 객체
     parkMarkers = []; //공원 마커 객체
     kidMarkers = []; //유치원 마커 객체
+    schoolMarkers = []; //학교 마커 객체
+
 
 
 
@@ -33,7 +35,9 @@ createLibraryMarkers(); //도서관 마커를 생성하고 주차장 마커 배�
 createBadstoreMarkers(); //유흥주점 마커를 생성하고 주차장 마커 배열에 추가합니다
 createHospitalMarkers(); //병원 마커를 생성하고 주차장 마커 배열에 추가합니다
 createParkMarkers(); //병원 마커를 생성하고 주차장 마커 배열에 추가합니다
-createKidMarkers(); //병원 마커를 생성하고 주차장 마커 배열에 추가합니다
+createKidMarkers(); //유치원 마커를 생성하고 주차장 마커 배열에 추가합니다
+createSchoolMarkers(); //학교 마커를 생성하고 주차장 마커 배열에 추가합니다
+
 
 
 
@@ -183,12 +187,36 @@ function setKidMarkers(map) {
 
 
 
+//학교 마커를 생성하고 주차장 마커 배열에 추가하는 함수입니다
+function createSchoolMarkers() {
+    for (var i = 0; i < schoolPositions.length; i++) {
+        
+        var imageSize = new kakao.maps.Size(22, 26),
+  
+        image = "https://i.ibb.co/9yrwPdM/school.png"
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(image, imageSize),    
+            marker = createMarker(schoolPositions[i], markerImage);  
+
+        // 생성된 마커를 유치원 마커 배열에 추가합니다
+        schoolMarkers.push(marker);        
+    }                
+} 
+// 학교 마커들의 지도 표시 여부를 설정하는 함수입니다
+function setSchoolMarkers(map) {        
+    for (var i = 0; i < schoolMarkers.length; i++) {  
+        schoolMarkers[i].setMap(map);
+    }        
+}
+
 
 setLibraryMarkers(map);
 setBadstoreMarkers(map);
 setHospitalMarkers(map);
 setParkMarkers(map);
 setKidMarkers(map);
+setSchoolMarkers(map);
+
 
 
 
