@@ -1,4 +1,4 @@
-var parkPostions = [
+var parkPositions = [
     new kakao.maps.LatLng(35.897221	, 128.5847829	),
     new kakao.maps.LatLng(35.9004074	, 128.6047509	),
     new kakao.maps.LatLng(35.9026969	, 128.6136141	),

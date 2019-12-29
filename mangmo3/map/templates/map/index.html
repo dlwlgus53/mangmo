@@ -29,7 +29,11 @@
       <div class = "row">
         <div class = "searchbar col-md-12"> 
             <form name = "searchForm">
-                <span>검색하실 주소를 입력하세요</span> <input type ="text" name="address">   
+              <!-- <input type="text" id="sample6_postcode" placeholder="우편번호"> -->
+              <input type="button" onclick="sample6_execDaumPostcode()" value="우리집 주소찾기"><br>
+              <!-- <input type="text" id="sample6_detailAddress" placeholder="상세주소"> -->
+              <!-- <input type="text" id="sample6_extraAddress" placeholder="참고항목"> -->
+               <input type ="text"id="sample6_address" placeholder = "주소" name="address">   
                 <span>반경 선택 </span>
                 <select name="range">
                     <option value="2">좁은 범위</option>
@@ -48,23 +52,7 @@
         <div  class="mapwrap col-md-8"> 
             <!-- 지도 위에 표시될 마커 카테고리 -->
             <div id="map" style="width:100%;height:350px;"></div>
-            
-            <!-- <div class="category">
-                <ul>
-                    <li id="coffeeMenu">
-                        <span class="ico_comm ico_coffee"></span>
-                        커피숍
-                    </li>
-                    <li id="storeMenu">
-                        <span class="ico_comm ico_store"></span>
-                        편의점
-                    </li>
-                    <li id="carparkMenu">
-                        <span class="ico_comm ico_carpark"></span>
-                        주차장
-                    </li>
-                </ul>
-            </div> -->
+
         </div>
 
       <!-- containter end-->
@@ -128,21 +116,18 @@
     </body>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=585192bcd0088d25ca626a7cae028be5&libraries=services"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="/static/js/addSearch.js"></script>
 <script type="text/javascript" src="/static/js/list.js"></script>
 <script type="text/javascript" src="/static/js/library.js"></script>
 <script type="text/javascript" src="/static/js/badstore.js"></script>
 <script type="text/javascript" src="/static/js/hospital.js"></script>
 <script type="text/javascript" src="/static/js/park.js"></script>
 <script type="text/javascript" src="/static/js/kid.js"></script>
-
-
 <script type="text/javascript" src="/static/js/index.js"></script>
 <script type="text/javascript" src="/static/js/search.js"></script>
 
 
-<!-- c6a890a7f127b3b83c16c9ee8ebbe7d5 -->
+// <!-- c6a890a7f127b3b83c16c9ee8ebbe7d5 -->/
 
-
-
-</body>
 </html>
