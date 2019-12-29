@@ -35,7 +35,7 @@ geocoder.addressSearch(address, function(result, status) {
 
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리집</div>'
+            content: '<div style="width:10px;text-align:center;padding:3px 0;">우리집</div>'
         });
         infowindow.open(map, marker);
 
@@ -79,6 +79,17 @@ geocoder.addressSearch(address, function(result, status) {
 
         var kidDiv = document.getElementById('kid');  
         kidDiv.innerHTML = kid;
+
+        //학교 정보를 검색후 화면에 보내줍니다.
+        var school = String(counter(swLatLng, neLatLng, schoolPositions))
+
+        var schoolDiv = document.getElementById('school');  
+        schoolDiv.innerHTML = school;
+
+
+        document.getElementById("sample6_address").value = address;
+
+    
     
 
     }
