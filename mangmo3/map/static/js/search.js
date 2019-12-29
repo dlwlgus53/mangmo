@@ -1,6 +1,6 @@
 // 검색시작
-var address = "대구";
-var range = 3;
+var address = "";
+var range;
 
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -23,19 +23,27 @@ geocoder.addressSearch(address, function(result, status) {
     if(address == ""){
         return;
     }else if (status === kakao.maps.services.Status.OK) {
-         console.log("성공성공성공")
     
         var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
     
         // 결과값으로 받은 위치를 마커로 표시합니다
+        var imageSrc = "https://i.ibb.co/ZMtxGY8/house.png" // 마커이미지의 주소입니다    
+            imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+            imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+      
+        // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
+    
+
         var marker = new kakao.maps.Marker({
             map: map,
-            position: coords
+            position: coords,
+            image: markerImage // 
         });
 
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:10px;text-align:center;padding:3px 0;">우리집</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리집</div>'
         });
         infowindow.open(map, marker);
 
@@ -88,6 +96,7 @@ geocoder.addressSearch(address, function(result, status) {
 
 
         document.getElementById("sample6_address").value = address;
+        document.getElementById(String(range)).checked = true;
 
     
     
