@@ -1,1 +1,1 @@
-web: gunicorn mangmo.wsgi --log-file -
+web: gunicorn mangmo.wsgi --log-file -hero
