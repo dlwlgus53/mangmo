@@ -2,6 +2,17 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+.footer {
+  left: 0;
+  bottom: 0;
+  padding : 10px;
+  margin-top : 50px;
+
+  width: 100%;
+  color: grey;
+  text-align: left;
+}
+
 .searchbar{
   background-color : mistyrose;
   /* text-align: center; */
@@ -35,6 +46,10 @@ body {
   font-weight: bold;
 
 }
+#warn{
+  color : grey;
+
+}
 
 .sidebar{
   text-align: center;
@@ -47,10 +62,6 @@ body {
   margin-bottom: 20px;
 }
 
-#footer {
-  clear: both;
-  padding: 20px;
-}
 
 
 

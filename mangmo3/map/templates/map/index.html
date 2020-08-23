@@ -4,7 +4,8 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>다양한 이미지 마커 표시하기</title>
+        <title>맹모삼천지교 주변시설검색</title>
+        <link rel="shortcut icon" type="image/png" href="{% static 'image/favicon.png' %}">
         <link rel="stylesheet" href="{% static 'css/index.css' %}" />
         <link rel="stylesheet" href="{% static 'css/frame.css' %}" />
         <!-- 합쳐지고 최소화된 최신 CSS -->
@@ -20,7 +21,8 @@
             <div class = "col-md-12">
                 <div class="header">
                     <h1>맹모삼천지교</h1>
-                    <p>아이들과 함께 안전하게 살 수 있는 동네</p>
+                    <p>아이들과 함께 안전하게 살 수 있는 동네 찾기</p>
+                    <p id="warn">현재는 대구지역만 주변시설 정보를 제공합니다</p>
               </div>
               <!-- header end -->
             </div>
@@ -110,8 +112,15 @@
       </div>
       <!-- sidebar end-->
       <div class="row">
-        <div id="footer">
-            <p></p>  
+        <div class="footer">
+            <p>개발자 정보</p>
+            <address>
+              Written by <a href="mailto:dlwlgus4553@gmail.com">Jihyun Lee</a>.
+              Visit: <a href="https://github.com/dlwlgus53">Jihyun's github</a>
+              and <a href="https://raspberrypi98.tistory.com/">Jihyun's blog</a><br/>
+              Written by <a href="mailto:21800339@handong.edu">Subin Bae</a>.
+            </address>
+             
           </div>
 
       </div>
