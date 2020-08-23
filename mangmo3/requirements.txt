@@ -46,7 +46,7 @@ defusedxml==0.6.0
 diff-match-patch==20181111
 distributed==2.5.2
 dj-database-url==0.5.0
-Django==2.2.7
+Django==2.2.13
 django-appconf==1.0.3
 django-compressor==2.3
 django-heroku==0.3.1
