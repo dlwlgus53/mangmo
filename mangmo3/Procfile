@@ -1,1 +1,1 @@
-web: gunicorn MANGMO.wsgi --log-file -
+web: gunicorn mangmo3.wsgi --log-file -
